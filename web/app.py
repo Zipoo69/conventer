@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, send_file
+from werkzeug.utils import secure_filename
 import os
 import subprocess
 
@@ -18,14 +19,13 @@ def index():
 def convert():
     file = request.files["file"]
 
-    name = os.path.splitext(file.filename)[0]
+    name = os.path.splitext(secure_filename(file.filename))[0]  # ← tato změna
 
     pdf_path = os.path.join(UPLOAD_FOLDER, name + ".pdf")
     docx_path = os.path.join(UPLOAD_FOLDER, name + ".docx")
 
     file.save(pdf_path)
 
-    # 🔥 KLÍČOVÉ: spustíme separátní Python script
     result = subprocess.run([
         "python",
         "worker.py",
