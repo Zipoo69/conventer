@@ -45,17 +45,8 @@
     }
 
     .logo svg { width: 20px; height: 20px; }
-
-    .header-text h1 {
-      font-size: 17px;
-      font-weight: 500;
-      line-height: 1.2;
-    }
-
-    .header-text p {
-      font-size: 13px;
-      color: #888;
-    }
+    .header-text h1 { font-size: 17px; font-weight: 500; line-height: 1.2; }
+    .header-text p { font-size: 13px; color: #888; }
 
     .drop-zone {
       border: 1.5px dashed #ccc;
@@ -88,17 +79,8 @@
     }
 
     .drop-icon svg { width: 22px; height: 22px; color: #888; }
-
-    .drop-label {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-
-    .drop-sub {
-      font-size: 13px;
-      color: #888;
-    }
+    .drop-label { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .drop-sub { font-size: 13px; color: #888; }
 
     .file-pill {
       display: none;
@@ -123,25 +105,12 @@
     }
 
     .file-pill-icon svg { width: 16px; height: 16px; color: #A32D2D; }
-
-    .file-pill-name {
-      flex: 1;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .file-pill-size {
-      color: #888;
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-    }
+    .file-pill-name { flex: 1; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .file-pill-size { color: #888; font-family: 'DM Mono', monospace; font-size: 12px; }
 
     .remove-btn {
       background: none; border: none; cursor: pointer;
-      color: #aaa;
-      padding: 2px; line-height: 1;
+      color: #aaa; padding: 2px; line-height: 1;
       transition: color 0.15s;
     }
     .remove-btn:hover { color: #1a1a1a; }
@@ -165,12 +134,7 @@
       color: #888;
     }
 
-    .preview-wrap iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      display: block;
-    }
+    .preview-wrap iframe { width: 100%; height: 400px; border: none; display: block; }
 
     .convert-btn {
       width: 100%;
@@ -187,14 +151,9 @@
       display: flex; align-items: center; justify-content: center; gap: 8px;
     }
 
-    .convert-btn:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-    }
-
+    .convert-btn:disabled { opacity: 0.35; cursor: not-allowed; }
     .convert-btn:not(:disabled):hover { opacity: 0.85; }
     .convert-btn:not(:disabled):active { transform: scale(0.99); }
-
     .convert-btn svg { width: 18px; height: 18px; }
 
     .status-row {
@@ -223,7 +182,7 @@
   <div class="card">
     <div class="header">
       <div class="logo">
-        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 20 20" fill="none">
           <path d="M4 2h8l4 4v12H4V2z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
           <path d="M12 2v4h4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M7 10h6M7 13h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
@@ -235,55 +194,53 @@
       </div>
     </div>
 
-    <form id="convertForm" action="/convert" method="post" enctype="multipart/form-data">
-      <div class="drop-zone" id="dropZone">
-        <input type="file" id="fileInput" name="file" accept="application/pdf" required>
-        <div class="drop-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 16V4M12 4l-4 4M12 4l4 4"/>
-            <path d="M4 20h16"/>
-          </svg>
-        </div>
-        <p class="drop-label">Přetáhni PDF sem</p>
-        <p class="drop-sub">nebo klikni pro výběr souboru</p>
-      </div>
-
-      <div class="file-pill" id="filePill">
-        <div class="file-pill-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <path d="M14 2v6h6"/>
-          </svg>
-        </div>
-        <span class="file-pill-name" id="fileName">—</span>
-        <span class="file-pill-size" id="fileSize"></span>
-        <button type="button" class="remove-btn" id="removeBtn" title="Odebrat">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <path d="M4 4l8 8M12 4l-8 8"/>
-          </svg>
-        </button>
-      </div>
-
-      <div class="preview-wrap" id="previewWrap">
-        <div class="preview-bar">
-          <span>Náhled</span>
-          <span id="previewName" style="font-family:'DM Mono',monospace;"></span>
-        </div>
-        <iframe id="preview"></iframe>
-      </div>
-
-      <button type="submit" class="convert-btn" id="convertBtn" disabled>
+    <div class="drop-zone" id="dropZone">
+      <input type="file" id="fileInput" name="file" accept="application/pdf">
+      <div class="drop-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 12h6M12 9v6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+          <path d="M12 16V4M12 4l-4 4M12 4l4 4"/>
+          <path d="M4 20h16"/>
         </svg>
-        Převést a stáhnout
-      </button>
-
-      <div class="status-row" id="statusRow">
-        <div class="spinner"></div>
-        <span>Konvertuji, prosím čekej…</span>
       </div>
-    </form>
+      <p class="drop-label">Přetáhni PDF sem</p>
+      <p class="drop-sub">nebo klikni pro výběr souboru</p>
+    </div>
+
+    <div class="file-pill" id="filePill">
+      <div class="file-pill-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <path d="M14 2v6h6"/>
+        </svg>
+      </div>
+      <span class="file-pill-name" id="fileName">—</span>
+      <span class="file-pill-size" id="fileSize"></span>
+      <button type="button" class="remove-btn" id="removeBtn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M4 4l8 8M12 4l-8 8"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="preview-wrap" id="previewWrap">
+      <div class="preview-bar">
+        <span>Náhled</span>
+        <span id="previewName" style="font-family:'DM Mono',monospace;"></span>
+      </div>
+      <iframe id="preview"></iframe>
+    </div>
+
+    <button class="convert-btn" id="convertBtn" disabled>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 12h6M12 9v6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+      </svg>
+      Převést a stáhnout
+    </button>
+
+    <div class="status-row" id="statusRow">
+      <div class="spinner"></div>
+      <span>Konvertuji, prosím čekej…</span>
+    </div>
   </div>
 
   <script>
@@ -298,7 +255,6 @@
     const previewName = document.getElementById('previewName');
     const convertBtn = document.getElementById('convertBtn');
     const statusRow = document.getElementById('statusRow');
-    const form = document.getElementById('convertForm');
 
     function formatSize(bytes) {
       if (bytes < 1024) return bytes + ' B';
@@ -352,9 +308,39 @@
       }
     });
 
-    form.addEventListener('submit', () => {
+    convertBtn.addEventListener('click', () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+
       convertBtn.disabled = true;
       statusRow.classList.add('visible');
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      fetch('/convert', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => {
+        if (!res.ok) return res.text().then(t => { throw new Error(t); });
+        return res.blob();
+      })
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName.textContent.replace('.pdf', '.docx');
+        a.click();
+        URL.revokeObjectURL(url);
+      })
+      .catch(err => {
+        alert('Chyba: ' + err.message);
+      })
+      .finally(() => {
+        convertBtn.disabled = false;
+        statusRow.classList.remove('visible');
+      });
     });
   </script>
 </body>
